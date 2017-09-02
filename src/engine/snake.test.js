@@ -1,6 +1,11 @@
 import {
+  UP,
+  RIGHT,
+  DOWN,
+  LEFT,
   create,
   feed,
+  move,
 } from './snake'
 
 /*
@@ -34,5 +39,50 @@ test('should gets bigger properly', () => {
     { x: 3, y: 3 },
     { x: 3, y: 4 },
     { x: 2, y: 4 }, // tail
+  ])
+})
+
+test('should move to UP properly', () => {
+  const changedSnake = move(snake, UP)
+
+  expect(changedSnake).toEqual([
+    { x: 4, y: 1 }, // new head
+    { x: 4, y: 2 }, // old head
+    { x: 4, y: 3 },
+    { x: 3, y: 3 },
+    { x: 3, y: 4 }, // new tail
+    // { x: 2, y: 4 }, // old tail
+  ])
+})
+
+test('should move to RIGHT properly', () => {
+  const changedSnake = move(snake, RIGHT)
+
+  expect(changedSnake).toEqual([
+    { x: 5, y: 2 }, // new head
+    { x: 4, y: 2 }, // old head
+    { x: 4, y: 3 },
+    { x: 3, y: 3 },
+    { x: 3, y: 4 }, // new tail
+    // { x: 2, y: 4 }, // old tail
+  ])
+})
+
+test('should not be allowed to move DOWN', () => {
+  const changedSnake = move(snake, DOWN)
+
+  expect(changedSnake).toBe(snake)
+})
+
+test('should move to LEFT properly', () => {
+  const changedSnake = move(snake, LEFT)
+
+  expect(changedSnake).toEqual([
+    { x: 3, y: 2 }, // new head
+    { x: 4, y: 2 }, // old head
+    { x: 4, y: 3 },
+    { x: 3, y: 3 },
+    { x: 3, y: 4 }, // new tail
+    // { x: 2, y: 4 }, // old tail
   ])
 })
