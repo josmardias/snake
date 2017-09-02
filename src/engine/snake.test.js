@@ -3,8 +3,16 @@ import {
   feed,
 } from './snake'
 
+/*
+    1 2 3 4 5
+  1 . . . . .
+  2 . . . O .
+  3 . . o o .
+  4 . o o . .
+  5 . . . . .
+*/
 const snake = [
-  { x: 5, y: 2 }, // head
+  { x: 4, y: 2 }, // head
   { x: 4, y: 3 },
   { x: 3, y: 3 },
   { x: 3, y: 4 },
@@ -21,10 +29,10 @@ test('should gets bigger properly', () => {
 
   expect(changedSnake).toEqual([
     { x: 3, y: 2 }, // new head
-    { x: 5, y: 2 }, // old head
+    { x: 4, y: 2 }, // old head
     { x: 4, y: 3 },
     { x: 3, y: 3 },
     { x: 3, y: 4 },
-    { x: 2, y: 4 }, // old tail
+    { x: 2, y: 4 }, // tail
   ])
 })
