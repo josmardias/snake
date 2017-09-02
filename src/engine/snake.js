@@ -51,3 +51,9 @@ const moveToDirection = (position, direction) => {
     return { ...position, x: position.x + 1 }
   }
 }
+
+export const isEatingItself = (snake) => {
+  const head = snake[0]
+  const samePositionAsHead = snake.filter((pos) => pos.x === head.x && pos.y === head.y)
+  return samePositionAsHead.length > 1
+}

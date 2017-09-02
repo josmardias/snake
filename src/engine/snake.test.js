@@ -6,6 +6,7 @@ import {
   create,
   feed,
   move,
+  isEatingItself,
 } from './snake'
 
 /*
@@ -85,4 +86,33 @@ test('should move to LEFT properly', () => {
     { x: 3, y: 4 }, // new tail
     // { x: 2, y: 4 }, // old tail
   ])
+})
+
+describe('#isEatingItself', () => {
+  test('should answer false when snake head is not eating itself', () => {
+    expect(isEatingItself(snake)).toBe(false)
+  })
+
+  test('should answer true when snake head is eating itself', () => {
+    /*
+        1 2 3 4 5
+      1 . . . . .
+      2 . o o . .
+      3 . o o . .
+      4 . o X . .
+      5 . . o . .
+    */
+    const _snake = [
+      { x: 3, y: 4 }, // head
+      { x: 2, y: 4 },
+      { x: 2, y: 3 },
+      { x: 2, y: 2 },
+      { x: 3, y: 2 },
+      { x: 3, y: 3 },
+      { x: 3, y: 4 }, // eating itself here
+      { x: 3, y: 5 }, // tail
+    ]
+
+    expect(isEatingItself(_snake)).toBe(true)
+  })
 })
