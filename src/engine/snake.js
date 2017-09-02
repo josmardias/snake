@@ -12,3 +12,7 @@
 export const create = (x, y) => (
   [{ x: x, y: y }]
 )
+
+export const feed = (snake, food) => (
+  [food, ...snake]
+)
